@@ -1,10 +1,28 @@
 /* Globalne style dla ciemnego motywu */
+:root {
+  --primary-color: rgb(2, 154, 136);
+  --secondary-color: rgb(3, 204, 180);
+}
+
+.header {
+  color: var(--primary-color);
+}
+
+.table thead th {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.table thead th:hover {
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
 body {
-  background-color: #121212;
+  background-color: #121212d3;
   color: #e0e0e0;
 }
 
-h1,
 h2,
 h3,
 h4,
@@ -12,10 +30,15 @@ h5,
 h6 {
   color: #e0e0e0;
 }
+h1 {
+  color: rgb(2, 154, 136);
+}
 
 .table {
   background-color: #1f1f1f;
   color: #e0e0e0;
+  border-radius: 10px; /* Adjust the value to your preference */
+  overflow: hidden; /* This ensures that the corners are properly rounded */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -43,4 +66,19 @@ thead th {
 }
 .table th {
   cursor: pointer;
+}
+.table thead th:first-child {
+  border-top-left-radius: 10px; /* Adjust the value to your preference */
+}
+
+.table thead th:last-child {
+  border-top-right-radius: 10px; /* Adjust the value to your preference */
+}
+
+.table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px; /* Adjust the value to your preference */
+}
+
+.table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px; /* Adjust the value to your preference */
 }
