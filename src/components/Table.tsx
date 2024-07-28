@@ -1,15 +1,6 @@
 import React from "react";
+import { Employee } from "../modals/Employee";
 
-// Zdefiniuj interfejs dla danych pracowników
-interface Employee {
-  id: string;
-  firstname: string;
-  lastname: string;
-  salary: number;
-  status: string;
-}
-
-// Zdefiniuj typ dla propsów komponentu Table
 interface TableProps {
   data: Employee[];
 }
@@ -23,6 +14,7 @@ export const Table: React.FC<TableProps> = ({ data }) => {
           <th>First Name</th>
           <th>Last Name</th>
           <th>Salary</th>
+          <th>Phone Number</th>
           <th>Status</th>
         </tr>
       </thead>
@@ -33,6 +25,8 @@ export const Table: React.FC<TableProps> = ({ data }) => {
             <td>{employee.firstname}</td>
             <td>{employee.lastname}</td>
             <td>{employee.salary}</td>
+
+            <td>{employee.phonenumber}</td>
             <td>{employee.status}</td>
           </tr>
         ))}
