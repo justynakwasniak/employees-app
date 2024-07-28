@@ -18,7 +18,7 @@ function App() {
     {
       id: "2",
       firstname: "ella",
-      lastname: "david",
+      lastname: "adams",
       salary: 6000,
       status: "na urlopie",
       phonenumber: 987654321,
@@ -26,10 +26,26 @@ function App() {
     {
       id: "3",
       firstname: "ann",
-      lastname: "davon",
+      lastname: "owen",
       salary: 7000,
       status: "na urlopie",
       phonenumber: 198123456,
+    },
+    {
+      id: "4",
+      firstname: "lily",
+      lastname: "colins",
+      salary: 20000,
+      status: "na urlopie",
+      phonenumber: 6728373,
+    },
+    {
+      id: "5",
+      firstname: "nick",
+      lastname: "werty",
+      salary: 1000000,
+      status: "na urlopie",
+      phonenumber: 63828373,
     },
   ];
 

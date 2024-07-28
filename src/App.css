@@ -41,3 +41,6 @@ thead {
 thead th {
   color: #e0e0e0;
 }
+.table th {
+  cursor: pointer;
+}
