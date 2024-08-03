@@ -1,54 +1,47 @@
-/* Globalne style dla ciemnego motywu */
+/* src/App.css */
+
 :root {
   --primary-color: rgb(2, 154, 136);
   --secondary-color: rgb(3, 204, 180);
-}
-
-.header {
-  color: var(--primary-color);
-}
-
-.table thead th {
-  background-color: var(--primary-color);
-  color: #fff;
-}
-
-.table thead th:hover {
-  background-color: var(--secondary-color);
-  cursor: pointer;
+  --background-color: #121212d3;
+  --text-color: #e0e0e0;
+  --card-background: #2c2c2c;
+  --input-background: #1f1f1f;
+  --input-border: #444;
 }
 
 body {
-  background-color: #121212d3;
-  color: #e0e0e0;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
+.header,
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: #e0e0e0;
+  color: var(--text-color);
 }
+
 h1 {
   color: rgb(13, 204, 182);
 }
 
 .table {
   background-color: #1f1f1f;
-  color: #e0e0e0;
-  border-radius: 10px; /* Adjust the value to your preference */
-  overflow: hidden; /* This ensures that the corners are properly rounded */
+  color: var(--text-color);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #323232;
-  color: #e0e0e0;
 }
 
 .table-hover tbody tr:hover {
   background-color: #454545;
-  color: #e0e0e0;
 }
 
 .table-bordered,
@@ -57,78 +50,82 @@ h1 {
   border-color: #454545;
 }
 
-thead {
-  background-color: #343a40;
-}
-
-thead th {
-  color: #dacece;
-}
-.table th {
+.table thead th {
+  background-color: var(--primary-color);
+  color: #fff;
   cursor: pointer;
 }
+
+.table thead th:hover {
+  background-color: var(--secondary-color);
+}
+
 .table thead th:first-child {
-  border-top-left-radius: 10px; /* Adjust the value to your preference */
+  border-top-left-radius: 10px;
 }
 
 .table thead th:last-child {
-  border-top-right-radius: 10px; /* Adjust the value to your preference */
+  border-top-right-radius: 10px;
 }
 
 .table tbody tr:last-child td:first-child {
-  border-bottom-left-radius: 10px; /* Adjust the value to your preference */
+  border-bottom-left-radius: 10px;
 }
 
 .table tbody tr:last-child td:last-child {
-  border-bottom-right-radius: 10px; /* Adjust the value to your preference */
+  border-bottom-right-radius: 10px;
 }
-/* src/App.css */
-.clickable-row:hover {
-  background-color: #495057; /* Kolor tła po najechaniu */
-}
-/* src/App.css */
 
-/* Styl dla klikanych wierszy tabeli */
+/* Styles for clickable rows */
 .clickable-row {
-  cursor: pointer; /* Kursor zmienia się na wskaźnik */
+  cursor: pointer;
+  background-color: #1f1f1f;
 }
 
-/* Styl dla wierszy tabeli po najechaniu */
 .clickable-row:hover {
-  background-color: #6c757d; /* Jaśniejszy kolor tła po najechaniu */
-  color: white; /* Opcjonalnie zmiana koloru tekstu */
+  background-color: #495057;
+  color: white;
 }
-/* Stylizacja formularza dodawania pracownika */
-.add-employee-form {
+
+/* Form styles */
+.form-card {
   max-width: 600px;
-  margin: auto;
+  margin: 20px auto;
   padding: 20px;
   border-radius: 8px;
-  background-color: #2c2c2c;
-  color: #e0e0e0;
+  background-color: var(--card-background);
+  color: var(--text-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.add-employee-form .form-group {
+.form-group {
   margin-bottom: 15px;
 }
 
-.add-employee-form label {
+.form-group label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-.add-employee-form input,
-.add-employee-form select {
+.form-group input,
+.form-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #444;
+  border: 1px solid var(--input-border);
   border-radius: 4px;
-  background-color: #1f1f1f;
-  color: #e0e0e0;
+  background-color: var(--input-background);
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
 }
 
-.add-employee-form button {
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.form-group button {
   padding: 10px 20px;
   background-color: var(--primary-color);
   border: none;
@@ -136,8 +133,9 @@ thead th {
   color: #fff;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-.add-employee-form button:hover {
+.form-group button:hover {
   background-color: var(--secondary-color);
 }

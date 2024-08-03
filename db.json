@@ -5,12 +5,12 @@
       "firstname": "john",
       "lastname": "doe",
       "birthdate": "1985-01-15",
-      "street": "123 Elm St",
+      "street": "123 Elm Street",
       "city": "Springfield",
-      "postalCode": "62701",
+      "postalCode": "62701aaaa",
       "salary": 5000,
       "status": "na urlopie",
-      "phonenumber": 123456789
+      "phonenumber": "1234567891111111111"
     },
     {
       "id": "2",
@@ -71,6 +71,30 @@
       "salary": "4",
       "status": "Zatrudniony",
       "phonenumber": "0777"
+    },
+    {
+      "id": "1aa",
+      "firstname": "nnnn",
+      "lastname": "kwasniak",
+      "birthdate": "2024-07-31",
+      "street": "0000",
+      "city": "ggggggggg",
+      "postalCode": "555",
+      "salary": "3",
+      "status": "Zatrudniony",
+      "phonenumber": "777"
+    },
+    {
+      "id": "aaaaaaaaaa",
+      "firstname": "aaaaaaaaaaayyyyyyyy",
+      "lastname": "aaaaaaaaaaaaaayyyyyyyyyyyyyy",
+      "birthdate": "1999-01-01",
+      "street": "ggg",
+      "city": "ggggggggg",
+      "postalCode": "gggggggggggggg",
+      "salary": "11",
+      "status": "Zwolniony",
+      "phonenumber": "0555555555555"
     }
   ]
 }

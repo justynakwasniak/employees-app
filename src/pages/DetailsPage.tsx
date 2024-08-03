@@ -1,13 +1,12 @@
 // src/pages/DetailsPage.tsx
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Employee } from "../modals/Employee";
-
 interface DetailsPageProps {
   data: Employee[];
 }
 
-export function DetailsPage({ data }: DetailsPageProps) {
+export const DetailsPage: React.FC<DetailsPageProps> = ({ data }) => {
   const { id } = useParams<{ id: string }>();
   const employee = data.find((emp) => emp.id === id);
 
@@ -17,37 +16,24 @@ export function DetailsPage({ data }: DetailsPageProps) {
 
   return (
     <div>
-      <h3>Employee Details</h3>
-      <p>
-        <strong>ID:</strong> {employee.id}
-      </p>
-      <p>
-        <strong>First Name:</strong> {employee.firstname}
-      </p>
-      <p>
-        <strong>Last Name:</strong> {employee.lastname}
-      </p>
-      <p>
-        <strong>Date of Birth:</strong> {employee.birthdate}
-      </p>
-      <p>
-        <strong>Street:</strong> {employee.street}
-      </p>
-      <p>
-        <strong>City:</strong> {employee.city}
-      </p>
-      <p>
-        <strong>Postal Code:</strong> {employee.postalCode}
-      </p>
-      <p>
-        <strong>Salary:</strong> ${employee.salary}
-      </p>
-      <p>
-        <strong>Status:</strong> {employee.status}
-      </p>
-      <p>
-        <strong>Phone Number:</strong> {employee.phonenumber}
-      </p>
+      <h1 className="mb-4">Employee Details</h1>
+      <ul className="list-group">
+        <li className="list-group-item">ID: {employee.id}</li>
+        <li className="list-group-item">First Name: {employee.firstname}</li>
+        <li className="list-group-item">Last Name: {employee.lastname}</li>
+        <li className="list-group-item">Date of Birth: {employee.birthdate}</li>
+        <li className="list-group-item">Street: {employee.street}</li>
+        <li className="list-group-item">City: {employee.city}</li>
+        <li className="list-group-item">Postal Code: {employee.postalCode}</li>
+        <li className="list-group-item">Salary: {employee.salary}</li>
+        <li className="list-group-item">Status: {employee.status}</li>
+        <li className="list-group-item">
+          Phone Number: {employee.phonenumber}
+        </li>
+      </ul>
+      <Link to={`/edit/${employee.id}`} className="btn btn-warning mt-3">
+        Edit
+      </Link>
     </div>
   );
-}
+};

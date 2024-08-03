@@ -1,7 +1,6 @@
 // src/components/Table.tsx
 import React, { useState } from "react";
 import { Employee } from "../modals/Employee";
-import "../App.css"; // Upewnij się, że ścieżka jest poprawna
 
 interface TableProps {
   data: Employee[];
