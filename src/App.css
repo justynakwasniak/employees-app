@@ -98,3 +98,46 @@ thead th {
   background-color: #6c757d; /* Jaśniejszy kolor tła po najechaniu */
   color: white; /* Opcjonalnie zmiana koloru tekstu */
 }
+/* Stylizacja formularza dodawania pracownika */
+.add-employee-form {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+.add-employee-form .form-group {
+  margin-bottom: 15px;
+}
+
+.add-employee-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-employee-form input,
+.add-employee-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+}
+
+.add-employee-form button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-employee-form button:hover {
+  background-color: var(--secondary-color);
+}

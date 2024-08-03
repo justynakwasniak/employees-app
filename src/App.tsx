@@ -1,77 +1,30 @@
-import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { EmployeesPage } from "./pages/EmployeesPage";
 import { DetailsPage } from "./pages/DetailsPage";
+import { AddEmployeePage } from "./pages/AddEmployeePage"; // Dodaj import dla AddEmployeePage
 import { Employee } from "./modals/Employee";
+import { fetchEmployees, createEmployee } from "./services/API"; // Zmiana ścieżki importu
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [employees, setEmployees] = useState<Employee[]>([]);
 
-  const mockData: Employee[] = [
-    {
-      id: "1",
-      firstname: "john",
-      lastname: "doe",
-      birthdate: "1985-01-15",
-      street: "123 Elm St",
-      city: "Springfield",
-      postalCode: "62701",
-      salary: 5000,
-      status: "na urlopie",
-      phonenumber: 123456789,
-    },
-    {
-      id: "2",
-      firstname: "ella",
-      lastname: "adams",
-      birthdate: "1990-02-25",
-      street: "456 Oak St",
-      city: "Metropolis",
-      postalCode: "10001",
-      salary: 6000,
-      status: "na urlopie",
-      phonenumber: 987654321,
-    },
-    {
-      id: "3",
-      firstname: "ann",
-      lastname: "owen",
-      birthdate: "1988-03-10",
-      street: "789 Pine St",
-      city: "Gotham",
-      postalCode: "20001",
-      salary: 7000,
-      status: "na urlopie",
-      phonenumber: 198123456,
-    },
-    {
-      id: "4",
-      firstname: "lily",
-      lastname: "colins",
-      birthdate: "1975-04-05",
-      street: "321 Maple St",
-      city: "Star City",
-      postalCode: "30001",
-      salary: 20000,
-      status: "na urlopie",
-      phonenumber: 6728373,
-    },
-    {
-      id: "5",
-      firstname: "nick",
-      lastname: "werty",
-      birthdate: "1980-05-20",
-      street: "654 Birch St",
-      city: "Central City",
-      postalCode: "40001",
-      salary: 1000000,
-      status: "na urlopie",
-      phonenumber: 63828373,
-    },
-  ];
+  useEffect(() => {
+    fetchEmployees().then((data) => setEmployees(data));
+  }, []);
 
-  const filteredData = mockData.filter((employee) =>
+  const handleAddEmployee = (newEmployee: Employee) => {
+    createEmployee(newEmployee)
+      .then((createdEmployee) => {
+        setEmployees([...employees, createdEmployee]);
+      })
+      .catch((error) => {
+        console.error("Error adding employee:", error);
+      });
+  };
+
+  const filteredData = employees.filter((employee) =>
     `${employee.firstname} ${employee.lastname} ${employee.id} ${employee.phonenumber}`
       .toLowerCase()
       .includes(searchTerm.toLowerCase())
@@ -90,7 +43,11 @@ const App = () => {
     },
     {
       path: "/details/:id",
-      element: <DetailsPage data={mockData} />,
+      element: <DetailsPage data={employees} />,
+    },
+    {
+      path: "/add",
+      element: <AddEmployeePage onAdd={handleAddEmployee} />,
     },
   ]);
 
