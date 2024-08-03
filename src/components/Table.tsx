@@ -1,14 +1,15 @@
+// src/components/Table.tsx
 import React, { useState } from "react";
 import { Employee } from "../modals/Employee";
+import "../App.css"; // Upewnij się, że ścieżka jest poprawna
 
 interface TableProps {
   data: Employee[];
 }
 
-type SortKey = keyof Employee; //określa, według którego klucza obiektu Employee dane mają być sortowane.
-type SortOrder = "asc" | "desc"; //określa, czy sortowanie jest rosnące czy malejące
-//asc: Ascending – rosnąco, czyli od najmniejszej wartości do największej (np. od A do Z, od 1 do 10).
-//desc: Descending – malejąco, czyli od największej wartości do najmniejszej (np. od Z do A, od 10 do 1).
+type SortKey = keyof Employee;
+type SortOrder = "asc" | "desc";
+
 export const Table: React.FC<TableProps> = ({ data }) => {
   const [sortKey, setSortKey] = useState<SortKey>("firstname");
   const [sortOrder, setSortOrder] = useState<SortOrder>("asc");
@@ -27,7 +28,7 @@ export const Table: React.FC<TableProps> = ({ data }) => {
     if (a[sortKey] > b[sortKey]) return sortOrder === "asc" ? 1 : -1;
     return 0;
   });
-  //renderowanie ikony sortowania obok nagłówka kolumny w tabeli
+
   const renderSortIcon = (key: SortKey) => {
     if (sortKey === key) {
       return sortOrder === "asc" ? (
@@ -63,7 +64,11 @@ export const Table: React.FC<TableProps> = ({ data }) => {
       </thead>
       <tbody>
         {sortedData.map((employee) => (
-          <tr key={employee.id}>
+          <tr
+            key={employee.id}
+            className="clickable-row" // Dodaj klasę CSS
+            onClick={() => (window.location.href = `/details/${employee.id}`)}
+          >
             <td>{employee.id}</td>
             <td>{employee.firstname}</td>
             <td>{employee.lastname}</td>

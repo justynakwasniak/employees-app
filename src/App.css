@@ -31,7 +31,7 @@ h6 {
   color: #e0e0e0;
 }
 h1 {
-  color: rgb(2, 154, 136);
+  color: rgb(13, 204, 182);
 }
 
 .table {
@@ -62,7 +62,7 @@ thead {
 }
 
 thead th {
-  color: #e0e0e0;
+  color: #dacece;
 }
 .table th {
   cursor: pointer;
@@ -81,4 +81,20 @@ thead th {
 
 .table tbody tr:last-child td:last-child {
   border-bottom-right-radius: 10px; /* Adjust the value to your preference */
+}
+/* src/App.css */
+.clickable-row:hover {
+  background-color: #495057; /* Kolor tła po najechaniu */
+}
+/* src/App.css */
+
+/* Styl dla klikanych wierszy tabeli */
+.clickable-row {
+  cursor: pointer; /* Kursor zmienia się na wskaźnik */
+}
+
+/* Styl dla wierszy tabeli po najechaniu */
+.clickable-row:hover {
+  background-color: #6c757d; /* Jaśniejszy kolor tła po najechaniu */
+  color: white; /* Opcjonalnie zmiana koloru tekstu */
 }
