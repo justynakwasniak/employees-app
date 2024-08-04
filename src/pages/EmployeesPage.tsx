@@ -4,6 +4,8 @@ import SearchBar from "../components/SearchBar";
 import { Table } from "../components/Table";
 import { Link } from "react-router-dom";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
+import { useTranslation } from "react-i18next";
+
 interface EmployeesPageProps {
   searchTerm: string;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
@@ -25,6 +27,7 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -49,16 +52,16 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
 
   return (
     <div>
-      <h1 className="mb-4">Employees</h1>
+      <h1 className="mb-4">{t("employees")}</h1>
       <input
         type="text"
         value={searchTerm}
         onChange={handleSearchChange}
-        placeholder="Search by name, id or phone number"
+        placeholder={t("Search by name, id or phone number")}
         className="form-control mb-3"
       />
       <Link to="/add" className="btn btn-primary mb-3">
-        Add Employee
+        {t("add")}
       </Link>
       <table className="table table-striped">
         <thead>
@@ -70,24 +73,24 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
               onClick={() => handleSort("firstname")}
               className="sortable-header"
             >
-              First Name{" "}
+              {t("firstName")}{" "}
               {sortKey === "firstname" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
             <th
               onClick={() => handleSort("lastname")}
               className="sortable-header"
             >
-              Last Name{" "}
+              {t("lastName")}{" "}
               {sortKey === "lastname" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
             <th
               onClick={() => handleSort("salary")}
               className="sortable-header"
             >
-              Salary{" "}
+              {t("salary")}{" "}
               {sortKey === "salary" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
-            <th>Actions</th>
+            <th>{t("actions")}</th>
           </tr>
         </thead>
         <tbody>
@@ -99,19 +102,19 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
               <td>{employee.salary}</td>
               <td>
                 <Link to={`/details/${employee.id}`} className="btn btn-info">
-                  Details
+                  {t("details")}
                 </Link>
                 <Link
                   to={`/edit/${employee.id}`}
                   className="btn btn-warning ms-2"
                 >
-                  Edit
+                  {t("edit")}
                 </Link>
                 <button
                   onClick={() => handleDelete(employee.id)}
                   className="btn btn-danger ms-2"
                 >
-                  Delete
+                  {t("delete")}
                 </button>
               </td>
             </tr>

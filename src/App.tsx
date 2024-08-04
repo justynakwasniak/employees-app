@@ -2,23 +2,24 @@ import React, { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { EmployeesPage } from "./pages/EmployeesPage";
 import { DetailsPage } from "./pages/DetailsPage";
-import { AddEmployeePage } from "./pages/AddEmployeePage"; // Dodaj import dla AddEmployeePage
+import { AddEmployeePage } from "./pages/AddEmployeePage";
 import { Employee } from "./modals/Employee";
 import {
   fetchEmployees,
   createEmployee,
   updateEmployee,
   deleteEmployee,
-} from "./services/API"; // Zmiana ścieżki importu
+} from "./services/API";
 import { EditEmployeePage } from "./pages/EditEmployeePage";
 import "./App.css";
-
+import { LanguageSelector } from "./components/LanguageSelector";
+import "./i18n";
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [sortKey, setSortKey] = useState<keyof Employee>("id");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
-
+  //wyswietalanie listy pracownikow za pomoca api
   useEffect(() => {
     fetchEmployees().then((data) => setEmployees(data));
   }, []);
@@ -106,6 +107,7 @@ const App = () => {
 
   return (
     <div className="App container mt-5">
+      <LanguageSelector />
       <RouterProvider router={router} />
     </div>
   );

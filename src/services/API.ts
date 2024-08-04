@@ -27,7 +27,7 @@ export const createEmployee = (newEmployee: Employee) => {
     }
   });
 };
-
+//pobieranie danych za pomoca id 
 export const fetchEmployeeById = (id: string) => {
   return fetch(`${apiUrl}/${id}`).then((response) => {
     if (response.ok) {

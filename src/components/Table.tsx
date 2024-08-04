@@ -1,13 +1,13 @@
 // src/components/Table.tsx
 import React, { useState } from "react";
 import { Employee } from "../modals/Employee";
-
+//tablica z danymi o pracownikach
 interface TableProps {
   data: Employee[];
 }
-
-type SortKey = keyof Employee;
-type SortOrder = "asc" | "desc";
+//sorotowanie
+type SortKey = keyof Employee; //moze to byc imie nazwisko pensja
+type SortOrder = "asc" | "desc"; //rosnaco lub malejaco
 
 export const Table: React.FC<TableProps> = ({ data }) => {
   const [sortKey, setSortKey] = useState<SortKey>("firstname");
@@ -21,7 +21,9 @@ export const Table: React.FC<TableProps> = ({ data }) => {
       setSortOrder("asc");
     }
   };
-
+  // Jeśli wartość a[sortKey] jest mniejsza niż b[sortKey], to:
+  // Jeśli sortOrder jest "asc" (rosnąco), zwraca -1, co oznacza, że a powinno pojawić się przed b w posortowanej tablicy.
+  // Jeśli sortOrder jest "desc" (malejąco), zwraca 1, co oznacza, że a powinno pojawić się po b.
   const sortedData = [...data].sort((a, b) => {
     if (a[sortKey] < b[sortKey]) return sortOrder === "asc" ? -1 : 1;
     if (a[sortKey] > b[sortKey]) return sortOrder === "asc" ? 1 : -1;
@@ -65,7 +67,7 @@ export const Table: React.FC<TableProps> = ({ data }) => {
         {sortedData.map((employee) => (
           <tr
             key={employee.id}
-            className="clickable-row" // Dodaj klasę CSS
+            className="clickable-row"
             onClick={() => (window.location.href = `/details/${employee.id}`)}
           >
             <td>{employee.id}</td>
