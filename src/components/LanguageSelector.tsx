@@ -2,14 +2,16 @@ import React from "react";
 import i18next from "i18next";
 
 export function LanguageSelector() {
-  const onLanguageClick = (lng: string) => {
-    i18next.changeLanguage(lng);
+  const onLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    i18next.changeLanguage(event.target.value);
   };
 
   return (
-    <div>
-      <button onClick={() => onLanguageClick("en")}>English</button>
-      <button onClick={() => onLanguageClick("pl")}>Polski</button>
+    <div className="mb-3">
+      <select onChange={onLanguageChange} defaultValue={i18next.language}>
+        <option value="en">English</option>
+        <option value="pl">Polski</option>
+      </select>
     </div>
   );
 }

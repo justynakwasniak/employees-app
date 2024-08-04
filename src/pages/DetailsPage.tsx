@@ -2,6 +2,8 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { Employee } from "../modals/Employee";
+import { BackButton } from "../components/BackButton";
+
 interface DetailsPageProps {
   data: Employee[];
 }
@@ -16,6 +18,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({ data }) => {
 
   return (
     <div>
+       <BackButton /> 
       <h1 className="mb-4">Employee Details</h1>
       <ul className="list-group">
         <li className="list-group-item">ID: {employee.id}</li>

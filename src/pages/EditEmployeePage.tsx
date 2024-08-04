@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Employee } from "../modals/Employee";
 import { fetchEmployeeById, updateEmployee } from "../services/API";
 import { Link } from "react-router-dom";
+import { BackButton } from "../components/BackButton";
+
 interface EditEmployeePageProps {
   data: Employee[];
   onUpdate: (updatedEmployee: Employee) => void;
@@ -45,6 +47,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
 
   return (
     <div>
+        <BackButton />
       <h1 className="mb-4">Edit Employee</h1>
       <form className="edit-employee-form" onSubmit={handleSubmit}>
         <div className="form-group">
