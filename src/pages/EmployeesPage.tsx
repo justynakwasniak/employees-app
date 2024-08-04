@@ -63,13 +63,13 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
               {sortKey === "lastname" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
             <th
-              onClick={() => handleSort("phonenumber")}
+              onClick={() => handleSort("salary")}
               className="sortable-header"
             >
-              Phone Number{" "}
-              {sortKey === "phonenumber" &&
-                (sortDirection === "asc" ? "↑" : "↓")}
+              Salary{" "}
+              {sortKey === "salary" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
+
             <th>Actions</th>
           </tr>
         </thead>
@@ -79,6 +79,7 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
               <td>{employee.id}</td>
               <td>{employee.firstname}</td>
               <td>{employee.lastname}</td>
+
               <td>{employee.phonenumber}</td>
               <td>
                 <Link to={`/details/${employee.id}`} className="btn btn-info">

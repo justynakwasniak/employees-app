@@ -4,6 +4,7 @@ import { Employee } from "../modals/Employee";
 interface AddEmployeeFormProps {
   onAdd: (employee: Employee) => void;
 }
+function calculate() {}
 
 export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
   const [formData, setFormData] = useState<Employee>({
