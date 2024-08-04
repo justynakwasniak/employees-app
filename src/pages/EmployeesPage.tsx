@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Employee } from "../modals/Employee";
 import SearchBar from "../components/SearchBar";
 import { Table } from "../components/Table";
 import { Link } from "react-router-dom";
-
+import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 interface EmployeesPageProps {
   searchTerm: string;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
@@ -11,6 +11,7 @@ interface EmployeesPageProps {
   onSort: (key: keyof Employee) => void;
   sortKey: keyof Employee;
   sortDirection: "asc" | "desc";
+  onDelete: (id: string) => void; // Add onDelete prop
 }
 
 export const EmployeesPage: React.FC<EmployeesPageProps> = ({
@@ -20,13 +21,30 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
   onSort,
   sortKey,
   sortDirection,
+  onDelete,
 }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState<string | null>(null);
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
   const handleSort = (key: keyof Employee) => {
     onSort(key);
+  };
+
+  const handleDelete = (id: string) => {
+    setSelectedEmployee(id);
+    setShowModal(true);
+  };
+
+  const confirmDelete = () => {
+    if (selectedEmployee) {
+      onDelete(selectedEmployee);
+      setShowModal(false);
+      setSelectedEmployee(null);
+    }
   };
 
   return (
@@ -69,7 +87,6 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
               Salary{" "}
               {sortKey === "salary" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
-
             <th>Actions</th>
           </tr>
         </thead>
@@ -79,8 +96,7 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
               <td>{employee.id}</td>
               <td>{employee.firstname}</td>
               <td>{employee.lastname}</td>
-
-              <td>{employee.phonenumber}</td>
+              <td>{employee.salary}</td>
               <td>
                 <Link to={`/details/${employee.id}`} className="btn btn-info">
                   Details
@@ -91,11 +107,23 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
                 >
                   Edit
                 </Link>
+                <button
+                  onClick={() => handleDelete(employee.id)}
+                  className="btn btn-danger ms-2"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      <ConfirmDeleteModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 };

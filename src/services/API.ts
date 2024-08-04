@@ -53,3 +53,12 @@ export const updateEmployee = (updatedEmployee: Employee) => {
     }
   });
 };
+export const deleteEmployee = (id: string) => {
+  return fetch(`${apiUrl}/${id}`, {
+    method: "DELETE",
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error("Cannot delete employee");
+    }
+  });
+};

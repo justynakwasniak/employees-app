@@ -4,7 +4,12 @@ import { EmployeesPage } from "./pages/EmployeesPage";
 import { DetailsPage } from "./pages/DetailsPage";
 import { AddEmployeePage } from "./pages/AddEmployeePage"; // Dodaj import dla AddEmployeePage
 import { Employee } from "./modals/Employee";
-import { fetchEmployees, createEmployee, updateEmployee } from "./services/API"; // Zmiana ścieżki importu
+import {
+  fetchEmployees,
+  createEmployee,
+  updateEmployee,
+  deleteEmployee,
+} from "./services/API"; // Zmiana ścieżki importu
 import { EditEmployeePage } from "./pages/EditEmployeePage";
 import "./App.css";
 
@@ -34,6 +39,17 @@ const App = () => {
         emp.id === updatedEmployee.id ? updatedEmployee : emp
       )
     );
+  };
+  const handleDeleteEmployee = (id: string) => {
+    deleteEmployee(id)
+      .then(() => {
+        setEmployees((prevEmployees) =>
+          prevEmployees.filter((emp) => emp.id !== id)
+        );
+      })
+      .catch((error) => {
+        console.error("Error deleting employee:", error);
+      });
   };
 
   const handleSort = (key: keyof Employee) => {
@@ -68,6 +84,7 @@ const App = () => {
           onSort={handleSort}
           sortKey={sortKey}
           sortDirection={sortDirection}
+          onDelete={handleDeleteEmployee}
         />
       ),
     },

@@ -1,18 +1,6 @@
 {
   "employees": [
     {
-      "id": "1",
-      "firstname": "John",
-      "lastname": "Doe",
-      "birthdate": "1985-06-15",
-      "street": "123 Maple St",
-      "city": "Springfield",
-      "postalCode": "11101",
-      "salary": 5000,
-      "status": "aktywny",
-      "phonenumber": 123456789
-    },
-    {
       "id": "2",
       "firstname": "Ella",
       "lastname": "Adams",
@@ -23,18 +11,6 @@
       "salary": 6000,
       "status": "na urlopie",
       "phonenumber": 987654321
-    },
-    {
-      "id": "3",
-      "firstname": "Michael",
-      "lastname": "Smith",
-      "birthdate": "1982-11-30",
-      "street": "789 Pine St",
-      "city": "Gotham",
-      "postalCode": "22202",
-      "salary": 7500,
-      "status": "aktywny",
-      "phonenumber": 234567890
     },
     {
       "id": "4",
@@ -73,15 +49,15 @@
       "phonenumber": 567890123
     },
     {
-      "id": "77",
+      "id": "justyna",
       "firstname": "justyna",
       "lastname": "kwasniak",
       "birthdate": "1993-09-01",
-      "street": "aa",
+      "street": "ggg",
       "city": "krakow",
       "postalCode": "22222",
-      "salary": "4",
-      "status": "Zwolniony",
+      "salary": "6",
+      "status": "Na urlopie",
       "phonenumber": "0555"
     }
   ]
