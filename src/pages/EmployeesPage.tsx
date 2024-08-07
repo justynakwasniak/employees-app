@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Employee } from "../modals/Employee";
-import SearchBar from "../components/SearchBar";
-import { Table } from "../components/Table";
 import { Link } from "react-router-dom";
 import ConfirmDeleteModal from "../components/ConfirmDeleteModal";
 import { useTranslation } from "react-i18next";
@@ -13,7 +11,7 @@ interface EmployeesPageProps {
   onSort: (key: keyof Employee) => void;
   sortKey: keyof Employee;
   sortDirection: "asc" | "desc";
-  onDelete: (id: string) => void; // Add onDelete prop
+  onDelete: (id: string) => void;
 }
 
 export const EmployeesPage: React.FC<EmployeesPageProps> = ({
@@ -57,7 +55,7 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
         type="text"
         value={searchTerm}
         onChange={handleSearchChange}
-        placeholder={t("Search by name, id or phone number")}
+        placeholder={t("searchPlaceholder")}
         className="form-control mb-3"
       />
       <Link to="/add" className="btn btn-primary mb-3">
@@ -101,18 +99,21 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
               <td>{employee.lastname}</td>
               <td>{employee.salary}</td>
               <td>
-                <Link to={`/details/${employee.id}`} className="btn btn-info">
+                <Link
+                  to={`/details/${employee.id}`}
+                  className="btn btn-secondary-custom"
+                >
                   {t("details")}
                 </Link>
                 <Link
                   to={`/edit/${employee.id}`}
-                  className="btn btn-warning ms-2"
+                  className="btn btn-secondary-custom ms-2"
                 >
                   {t("edit")}
                 </Link>
                 <button
                   onClick={() => handleDelete(employee.id)}
-                  className="btn btn-danger ms-2"
+                  className="btn btn-secondary-custom ms-2"
                 >
                   {t("delete")}
                 </button>

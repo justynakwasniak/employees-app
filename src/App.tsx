@@ -4,24 +4,23 @@ import { EmployeesPage } from "./pages/EmployeesPage";
 import { DetailsPage } from "./pages/DetailsPage";
 import { AddEmployeePage } from "./pages/AddEmployeePage";
 import { Employee } from "./modals/Employee";
-import {
-  fetchEmployees,
-  createEmployee,
-  updateEmployee,
-  deleteEmployee,
-} from "./services/API";
+import { fetchEmployees, createEmployee, deleteEmployee } from "./services/API";
 import { EditEmployeePage } from "./pages/EditEmployeePage";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { LanguageSelector } from "./components/LanguageSelector";
 import "./i18n";
+
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [sortKey, setSortKey] = useState<keyof Employee>("id");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
-  //wyswietalanie listy pracownikow za pomoca api
+
   useEffect(() => {
-    fetchEmployees().then((data) => setEmployees(data));
+    fetchEmployees()
+      .then((data) => setEmployees(data))
+      .catch((error) => console.error("Error fetching employees:", error));
   }, []);
 
   const handleAddEmployee = (newEmployee: Employee) => {
@@ -41,6 +40,7 @@ const App = () => {
       )
     );
   };
+
   const handleDeleteEmployee = (id: string) => {
     deleteEmployee(id)
       .then(() => {

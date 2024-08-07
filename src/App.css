@@ -139,3 +139,13 @@ h1 {
 .form-group button:hover {
   background-color: var(--secondary-color);
 }
+.btn-secondary-custom {
+  background-color: rgb(5, 197, 175);
+  border-color: rgb(4, 170, 151);
+  color: white; /* Zmieniaj kolor tekstu w razie potrzeby */
+}
+
+.btn-secondary-custom:hover {
+  background-color: rgb(2, 179, 154); /* Zmiana koloru przy najechaniu */
+  border-color: rgb(2, 179, 154);
+}

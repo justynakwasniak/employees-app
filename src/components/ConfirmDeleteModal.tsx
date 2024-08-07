@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 interface ConfirmDeleteModalProps {
   show: boolean;
@@ -8,20 +9,22 @@ interface ConfirmDeleteModalProps {
 }
 
 const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({ show, onHide, onConfirm }) => {
+  const { t } = useTranslation();
+
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
-        <Modal.Title>Confirm Delete</Modal.Title>
+        <Modal.Title>{t("confirmDelete")}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        Are you sure you want to delete this employee?
+        {t("confirmDeleteMessage")}
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onHide}>
-          No
+          {t("no")}
         </Button>
         <Button variant="danger" onClick={onConfirm}>
-          Yes
+          {t("yes")}
         </Button>
       </Modal.Footer>
     </Modal>

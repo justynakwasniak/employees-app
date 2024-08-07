@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Employee } from "../modals/Employee";
 import { fetchEmployeeById, updateEmployee } from "../services/API";
-import { Link } from "react-router-dom";
 import { BackButton } from "../components/BackButton";
+import { useTranslation } from "react-i18next";
 
 interface EditEmployeePageProps {
   data: Employee[];
@@ -17,6 +17,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [formData, setFormData] = useState<Employee | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (id) {
@@ -43,12 +44,12 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
     }
   };
 
-  if (!formData) return <div>Loading...</div>;
+  if (!formData) return <div>{t("loading")}</div>;
 
   return (
     <div>
-        <BackButton />
-      <h1 className="mb-4">Edit Employee</h1>
+      <BackButton />
+      <h1 className="mb-4">{t("editEmployee")}</h1>
       <form className="edit-employee-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="id">ID:</label>
@@ -62,7 +63,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="firstname">First Name:</label>
+          <label htmlFor="firstname">{t("firstName")}:</label>
           <input
             type="text"
             id="firstname"
@@ -73,7 +74,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="lastname">Last Name:</label>
+          <label htmlFor="lastname">{t("lastName")}:</label>
           <input
             type="text"
             id="lastname"
@@ -84,7 +85,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="birthdate">Date of Birth (YYYY-MM-DD):</label>
+          <label htmlFor="birthdate">{t("dateOfBirth")}(YYYY-MM-DD):</label>
           <input
             type="date"
             id="birthdate"
@@ -94,7 +95,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="street">Street:</label>
+          <label htmlFor="street">{t("street")}:</label>
           <input
             type="text"
             id="street"
@@ -104,7 +105,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="city">City:</label>
+          <label htmlFor="city">{t("city")}:</label>
           <input
             type="text"
             id="city"
@@ -114,7 +115,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="postalCode">Postal Code:</label>
+          <label htmlFor="postalCode">{t("postalCode")}:</label>
           <input
             type="text"
             id="postalCode"
@@ -124,7 +125,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="salary">Salary:</label>
+          <label htmlFor="salary">{t("salary")}:</label>
           <input
             type="number"
             id="salary"
@@ -135,20 +136,20 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
           />
         </div>
         <div className="form-group">
-          <label htmlFor="status">Status:</label>
+          <label htmlFor="status">{t("status")}:</label>
           <select
             id="status"
             name="status"
             value={formData.status}
             onChange={handleChange}
           >
-            <option value="Zatrudniony">Zatrudniony</option>
-            <option value="Na urlopie">Na urlopie</option>
-            <option value="Zwolniony">Zwolniony</option>
+            <option value="Zatrudniony">{t("status")}</option>
+            <option value="Na urlopie">{t("status")}</option>
+            <option value="Zwolniony">{t("status")}</option>
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="phonenumber">Phone Number:</label>
+          <label htmlFor="phonenumber">{t("phoneNumber")}:</label>
           <input
             type="text"
             id="phonenumber"
@@ -158,7 +159,7 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Update Employee
+          {t("updateEmployee")}
         </button>
       </form>
     </div>
