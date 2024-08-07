@@ -7,8 +7,12 @@ export function LanguageSelector() {
   };
 
   return (
-    <div className="mb-3">
-      <select onChange={onLanguageChange} defaultValue={i18next.language}>
+    <div className="mb-3 ">
+      <select
+        className="form-select"
+        onChange={onLanguageChange}
+        defaultValue={i18next.language}
+      >
         <option value="en">English</option>
         <option value="pl">Polski</option>
       </select>

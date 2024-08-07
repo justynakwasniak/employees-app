@@ -50,70 +50,86 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
 
   return (
     <div>
-      <h1 className="mb-4">{t("employees")}</h1>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={handleSearchChange}
-        placeholder={t("searchPlaceholder")}
-        className="form-control mb-3"
-      />
-      <Link to="/add" className="btn btn-primary mb-3">
-        {t("add")}
-      </Link>
+      <h1 className="mb-4 text-center">{t("employees")}</h1>
+      <div className="d-flex justify-content-center mb-3">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          placeholder={t("searchPlaceholder")}
+          className="form-control mb-3 w-50"
+        />
+      </div>
+      <div className="mb-4 text-center">
+        <Link
+          to="/add"
+          className="btn btn-primary mb-3"
+          style={{
+            backgroundColor: "rgb(2, 154, 136)",
+            borderColor: "rgb(2, 154, 136)",
+            color: "#fff",
+          }}
+        >
+          {t("add")}
+        </Link>
+      </div>
+
       <table className="table table-striped">
         <thead>
           <tr>
-            <th onClick={() => handleSort("id")} className="sortable-header">
+            <th
+              onClick={() => handleSort("id")}
+              className="sortable-header text-center"
+            >
               ID {sortKey === "id" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
             <th
               onClick={() => handleSort("firstname")}
-              className="sortable-header"
+              className="sortable-header text-center"
             >
               {t("firstName")}{" "}
               {sortKey === "firstname" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
             <th
               onClick={() => handleSort("lastname")}
-              className="sortable-header"
+              className="sortable-header text-center"
             >
               {t("lastName")}{" "}
               {sortKey === "lastname" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
             <th
               onClick={() => handleSort("salary")}
-              className="sortable-header"
+              className="sortable-header text-center"
             >
               {t("salary")}{" "}
               {sortKey === "salary" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
-            <th>{t("actions")}</th>
+            <th className="text-center">{t("actions")}</th>
           </tr>
         </thead>
         <tbody>
           {data.map((employee) => (
             <tr key={employee.id}>
               <td>{employee.id}</td>
-              <td>{employee.firstname}</td>
-              <td>{employee.lastname}</td>
-              <td>{employee.salary}</td>
-              <td>
+              <td className="text-center">{employee.firstname}</td>
+              <td className="text-center">{employee.lastname}</td>
+              <td className="text-center">{employee.salary}</td>
+              <td className="text-center">
                 <Link
                   to={`/details/${employee.id}`}
-                  className="btn btn-secondary-custom"
+                  className="btn btn-secondary-custom btn-sm d-inline-block mb-1 mb-sm-0"
                 >
                   {t("details")}
                 </Link>
                 <Link
                   to={`/edit/${employee.id}`}
-                  className="btn btn-secondary-custom ms-2"
+                  className="btn btn-secondary-custom btn-sm d-inline-block mb-1 mb-sm-0 ms-2"
                 >
                   {t("edit")}
                 </Link>
                 <button
                   onClick={() => handleDelete(employee.id)}
-                  className="btn btn-secondary-custom ms-2"
+                  className="btn btn-secondary-custom btn-sm d-inline-block mb-1 mb-sm-0 ms-2"
                 >
                   {t("delete")}
                 </button>

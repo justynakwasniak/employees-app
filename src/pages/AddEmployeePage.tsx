@@ -14,7 +14,7 @@ export const AddEmployeePage: React.FC<AddEmployeePageProps> = ({ onAdd }) => {
   return (
     <div>
       <BackButton />
-      <h1 className="mb-4">{t("addNewEmployee")}</h1>
+      <h1 className="mb-4 text-center ">{t("addNewEmployee")}</h1>
       <AddEmployeeForm onAdd={onAdd} />
     </div>
   );

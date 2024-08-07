@@ -31,6 +31,10 @@ const resources = {
       confirmDeleteMessage: "Are you sure you want to delete this employee?",
       no: "No",
       yes: "Yes",
+      addEmployee: "Add Employee",
+      employed: "Employed",
+      onLeave: "On Leave",
+      dismissed: "Dismissed",
     },
   },
   pl: {
@@ -62,6 +66,10 @@ const resources = {
       confirmDeleteMessage: "Czy na pewno chcesz usunąć tego pracownika?",
       no: "Nie",
       yes: "Tak",
+      addEmployee: "Dodaj Pracownika",
+      employed: "Zatrudniony",
+      onLeave: "Na urlopie",
+      dismissed: "Zwolniony",
     },
   },
 };

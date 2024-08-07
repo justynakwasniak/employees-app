@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Employee } from "../modals/Employee";
+import { useTranslation } from "react-i18next";
 
 interface AddEmployeeFormProps {
   onAdd: (employee: Employee) => void;
 }
 
 export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState<Employee>({
     id: "",
     firstname: "",
@@ -51,9 +54,9 @@ export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
   };
 
   return (
-    <form className="add-employee-form" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="id">ID:</label>
+    <form className="add-employee-form text-center" onSubmit={handleSubmit}>
+      <div className="form-group mb-3">
+        <label htmlFor="id">{t("id")}:</label>
         <input
           type="text"
           id="id"
@@ -61,10 +64,11 @@ export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
           value={formData.id}
           onChange={handleChange}
           required
+          className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="firstname">First Name:</label>
+      <div className="form-group mb-3">
+        <label htmlFor="firstname">{t("firstName")}:</label>
         <input
           type="text"
           id="firstname"
@@ -72,10 +76,11 @@ export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
           value={formData.firstname}
           onChange={handleChange}
           required
+          className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="lastname">Last Name:</label>
+      <div className="form-group mb-3">
+        <label htmlFor="lastname">{t("lastName")}:</label>
         <input
           type="text"
           id="lastname"
@@ -83,50 +88,55 @@ export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
           value={formData.lastname}
           onChange={handleChange}
           required
+          className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="birthdate">Date of Birth (YYYY-MM-DD):</label>
+      <div className="form-group mb-3">
+        <label htmlFor="birthdate">{t("birthdate")}:</label>
         <input
           type="date"
           id="birthdate"
           name="birthdate"
           value={formData.birthdate}
           onChange={handleChange}
+          className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="street">Street:</label>
+      <div className="form-group mb-3">
+        <label htmlFor="street">{t("street")}:</label>
         <input
           type="text"
           id="street"
           name="street"
           value={formData.street}
           onChange={handleChange}
+          className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="city">City:</label>
+      <div className="form-group mb-3">
+        <label htmlFor="city">{t("city")}:</label>
         <input
           type="text"
           id="city"
           name="city"
           value={formData.city}
           onChange={handleChange}
+          className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="postalCode">Postal Code:</label>
+      <div className="form-group mb-3">
+        <label htmlFor="postalCode">{t("postalCode")}:</label>
         <input
           type="text"
           id="postalCode"
           name="postalCode"
           value={formData.postalCode}
           onChange={handleChange}
+          className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="salary">Salary:</label>
+      <div className="form-group mb-3">
+        <label htmlFor="salary">{t("salary")}:</label>
         <input
           type="number"
           id="salary"
@@ -134,33 +144,44 @@ export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
           value={formData.salary}
           onChange={handleChange}
           required
+          className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="status">Status:</label>
+      <div className="form-group mb-3">
+        <label htmlFor="status">{t("status")}:</label>
         <select
           id="status"
           name="status"
           value={formData.status}
           onChange={handleChange}
+          className="form-select w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         >
-          <option value="Zatrudniony">Zatrudniony</option>
-          <option value="Na urlopie">Na urlopie</option>
-          <option value="Zwolniony">Zwolniony</option>
+          <option value="Zatrudniony">{t("employed")}</option>
+          <option value="Na urlopie">{t("onLeave")}</option>
+          <option value="Zwolniony">{t("dismissed")}</option>
         </select>
       </div>
-      <div className="form-group">
-        <label htmlFor="phonenumber">Phone Number:</label>
+      <div className="form-group mb-3">
+        <label htmlFor="phonenumber">{t("phoneNumber")}:</label>
         <input
           type="text"
           id="phonenumber"
           name="phonenumber"
           value={formData.phonenumber}
           onChange={handleChange}
+          className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <button type="submit" className="btn btn-primary">
-        Add Employee
+      <button
+        type="submit"
+        className="btn btn-primary"
+        style={{
+          backgroundColor: "rgb(2, 154, 136)",
+          borderColor: "rgb(2, 154, 136)",
+          color: "#fff",
+        }}
+      >
+        {t("addEmployee")}
       </button>
     </form>
   );
