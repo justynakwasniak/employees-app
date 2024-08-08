@@ -172,15 +172,7 @@ export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
           className="form-control w-50 mx-auto" // Wyśrodkowanie i szerokość 50%
         />
       </div>
-      <button
-        type="submit"
-        className="btn btn-primary"
-        style={{
-          backgroundColor: "rgb(2, 154, 136)",
-          borderColor: "rgb(2, 154, 136)",
-          color: "#fff",
-        }}
-      >
+      <button type="submit" className="btn custom-btn mt-3">
         {t("addEmployee")}
       </button>
     </form>

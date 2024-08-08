@@ -20,8 +20,11 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({ data }) => {
   return (
     <div>
       <BackButton />
-      <h1 className="mb-4">{t("employeeDetails")}</h1>
-      <ul className="list-group">
+      <h1 className="mb-4 text-center">{t("employeeDetails")}</h1>
+      <ul
+        className="list-group text-center mx-auto"
+        style={{ maxWidth: "400px" }}
+      >
         <li className="list-group-item">ID: {employee.id}</li>
         <li className="list-group-item">
           {t("firstName")}: {employee.firstname}
@@ -51,7 +54,7 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({ data }) => {
           {t("phoneNumber")}: {employee.phonenumber}
         </li>
       </ul>
-      <Link to={`/edit/${employee.id}`} className="btn btn-warning mt-3">
+      <Link to={`/edit/${employee.id}`} className="btn custom-btn mt-3">
         {t("edit")}
       </Link>
     </div>

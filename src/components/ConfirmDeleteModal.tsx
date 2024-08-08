@@ -8,22 +8,32 @@ interface ConfirmDeleteModalProps {
   onConfirm: () => void;
 }
 
-const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({ show, onHide, onConfirm }) => {
+const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
+  show,
+  onHide,
+  onConfirm,
+}) => {
   const { t } = useTranslation();
 
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
-        <Modal.Title>{t("confirmDelete")}</Modal.Title>
+        <Modal.Title className="text-secondary">
+          {t("confirmDelete")}
+        </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="text-secondary">
         {t("confirmDeleteMessage")}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onHide}>
+        <Button
+          className="btn custom-btn mt-3"
+          variant="secondary"
+          onClick={onHide}
+        >
           {t("no")}
         </Button>
-        <Button variant="danger" onClick={onConfirm}>
+        <Button className="btn custom-btn mt-3" onClick={onConfirm}>
           {t("yes")}
         </Button>
       </Modal.Footer>

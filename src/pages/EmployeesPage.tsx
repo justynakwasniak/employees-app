@@ -61,15 +61,7 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
         />
       </div>
       <div className="mb-4 text-center">
-        <Link
-          to="/add"
-          className="btn btn-primary mb-3"
-          style={{
-            backgroundColor: "rgb(2, 154, 136)",
-            borderColor: "rgb(2, 154, 136)",
-            color: "#fff",
-          }}
-        >
+        <Link to="/add" className="btn custom-btn mt-3">
           {t("add")}
         </Link>
       </div>
