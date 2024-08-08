@@ -156,9 +156,9 @@ export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
             onChange={handleChange}
             className="form-control"
           >
-            <option value="Zatrudniony">{t("employed")}</option>
-            <option value="Na urlopie">{t("onLeave")}</option>
-            <option value="Zwolniony">{t("dismissed")}</option>
+            <option value="Employed">{t("employed")}</option>
+            <option value="On Leave">{t("onLeave")}</option>
+            <option value="Dismissed">{t("dismissed")}</option>
           </select>
         </div>
         <div className="form-group text-center">

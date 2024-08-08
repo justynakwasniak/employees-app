@@ -96,6 +96,14 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
               {t("salary")}{" "}
               {sortKey === "salary" && (sortDirection === "asc" ? "↑" : "↓")}
             </th>
+            <th
+              onClick={() => handleSort("status")}
+              className="sortable-header text-center"
+            >
+              {t("status")}{" "}
+              {sortKey === "status" && (sortDirection === "asc" ? "↑" : "↓")}
+            </th>
+
             <th className="text-center">{t("actions")}</th>
           </tr>
         </thead>
@@ -106,6 +114,8 @@ export const EmployeesPage: React.FC<EmployeesPageProps> = ({
               <td className="text-center">{employee.firstname}</td>
               <td className="text-center">{employee.lastname}</td>
               <td className="text-center">{employee.salary}</td>
+              <td className="text-center">{employee.status}</td>
+
               <td className="text-center">
                 <Link
                   to={`/details/${employee.id}`}
