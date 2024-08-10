@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Employee } from "../modals/Employee";
 import { t } from "i18next";
 import { Link } from "react-router-dom";
+import StatusBadge from "./StatusBadge";
 
 interface TableProps {
   data: Employee[];
@@ -23,7 +24,6 @@ export const Table: React.FC<TableProps> = ({ data }) => {
     }
   };
 
-  // Define the handleDelete function to accept an id
   function handleDelete(id: string): void {
     // Your delete logic here
     console.log(`Deleting employee with id: ${id}`);
@@ -78,7 +78,9 @@ export const Table: React.FC<TableProps> = ({ data }) => {
               <td className="text-center">{employee.firstname}</td>
               <td className="text-center">{employee.lastname}</td>
               <td className="text-center">{employee.salary}</td>
-              <td className="text-center">{employee.status}</td>
+              <td className="text-center">
+                <StatusBadge status={employee.status || "indefinite"} />
+              </td>
               <td className="text-center">
                 <Link
                   to={`/details/${employee.id}`}

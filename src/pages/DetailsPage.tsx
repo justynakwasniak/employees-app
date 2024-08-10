@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Employee } from "../modals/Employee";
 import { BackButton } from "../components/BackButton";
 import { useTranslation } from "react-i18next";
+import StatusBadge from "../components/StatusBadge";
 
 interface DetailsPageProps {
   data: Employee[];
@@ -48,7 +49,8 @@ export const DetailsPage: React.FC<DetailsPageProps> = ({ data }) => {
           {t("salary")}: {employee.salary}
         </li>
         <li className="list-group-item">
-          {t("status")}: {employee.status}
+          {t("status")}:{" "}
+          <StatusBadge status={employee.status || "indefinite"} />
         </li>
         <li className="list-group-item">
           {t("phoneNumber")}: {employee.phonenumber}
