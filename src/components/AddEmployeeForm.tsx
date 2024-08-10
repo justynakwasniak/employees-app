@@ -18,7 +18,7 @@ export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
     city: "",
     postalCode: "",
     salary: 0,
-    status: "Zatrudniony",
+    status: "Employeed",
     phonenumber: 0,
   });
 
@@ -35,7 +35,8 @@ export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
       formData.id &&
       formData.firstname &&
       formData.lastname &&
-      formData.salary
+      formData.salary &&
+      formData.status
     ) {
       onAdd(formData);
       setFormData({
@@ -47,7 +48,7 @@ export const AddEmployeeForm: React.FC<AddEmployeeFormProps> = ({ onAdd }) => {
         city: "",
         postalCode: "",
         salary: 0,
-        status: "Zatrudniony",
+        status: "Employeed",
         phonenumber: 0,
       });
     }

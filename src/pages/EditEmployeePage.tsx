@@ -11,7 +11,6 @@ interface EditEmployeePageProps {
 }
 
 export const EditEmployeePage: React.FC<EditEmployeePageProps> = ({
-  data,
   onUpdate,
 }) => {
   const { id } = useParams<{ id: string }>();

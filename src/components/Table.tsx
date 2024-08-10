@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Employee } from "../modals/Employee";
+import { t } from "i18next";
+import { Link } from "react-router-dom";
 
 interface TableProps {
   data: Employee[];
@@ -21,22 +23,11 @@ export const Table: React.FC<TableProps> = ({ data }) => {
     }
   };
 
-  const sortedData = [...data].sort((a, b) => {
-    if (a[sortKey] < b[sortKey]) return sortOrder === "asc" ? -1 : 1;
-    if (a[sortKey] > b[sortKey]) return sortOrder === "asc" ? 1 : -1;
-    return 0;
-  });
-
-  const renderSortIcon = (key: SortKey) => {
-    if (sortKey === key) {
-      return sortOrder === "asc" ? (
-        <i className="bi bi-arrow-up"></i>
-      ) : (
-        <i className="bi bi-arrow-down"></i>
-      );
-    }
-    return null;
-  };
+  // Define the handleDelete function to accept an id
+  function handleDelete(id: string): void {
+    // Your delete logic here
+    console.log(`Deleting employee with id: ${id}`);
+  }
 
   return (
     <div className="table-responsive">
@@ -47,35 +38,35 @@ export const Table: React.FC<TableProps> = ({ data }) => {
               onClick={() => handleSort("id")}
               className="sortable-header text-center"
             >
-              ID {sortKey === "id" && (sortDirection === "asc" ? "↑" : "↓")}
+              ID {sortKey === "id" && (sortOrder === "asc" ? "↑" : "↓")}
             </th>
             <th
               onClick={() => handleSort("firstname")}
               className="sortable-header text-center"
             >
               {t("firstName")}{" "}
-              {sortKey === "firstname" && (sortDirection === "asc" ? "↑" : "↓")}
+              {sortKey === "firstname" && (sortOrder === "asc" ? "↑" : "↓")}
             </th>
             <th
               onClick={() => handleSort("lastname")}
               className="sortable-header text-center"
             >
               {t("lastName")}{" "}
-              {sortKey === "lastname" && (sortDirection === "asc" ? "↑" : "↓")}
+              {sortKey === "lastname" && (sortOrder === "asc" ? "↑" : "↓")}
             </th>
             <th
               onClick={() => handleSort("salary")}
               className="sortable-header text-center"
             >
               {t("salary")}{" "}
-              {sortKey === "salary" && (sortDirection === "asc" ? "↑" : "↓")}
+              {sortKey === "salary" && (sortOrder === "asc" ? "↑" : "↓")}
             </th>
             <th
               onClick={() => handleSort("status")}
               className="sortable-header text-center"
             >
               {t("status")}{" "}
-              {sortKey === "status" && (sortDirection === "asc" ? "↑" : "↓")}
+              {sortKey === "status" && (sortOrder === "asc" ? "↑" : "↓")}
             </th>
             <th className="text-center">{t("actions")}</th>
           </tr>
